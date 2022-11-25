@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=i" />
+    <title>Interpolation, Extrapolation and Intersection</title>
+  </head>
+  <body>
+    <div
+      style="
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: x-large;
+        font-weight: 600;
+        text-justify: inter-cluster;
+        text-shadow: 8px;
+        text-decoration: solid;
+        color: crimson;
+        text-transform: uppercase;
+      "
+    >
+      Interpolation, Extrapolation and Intersection
+    </div>
+    <article>
+      <div>
+        <strong>What is interpolation?</strong>
+        <span
+          >In the mathematical field of numerical analysis, interpolation is a
+          type of estimation, a method of constructing new data points based on
+          the range of a discrete set of known data points
+        </span>
+      </div>
+      <div>
+        <strong>formulae</strong>
+        y=y_{1}+\left(x-x_{1}\right)
+        \frac{\left(y_{2}-y_{1}\right)}{\left(x_{2}-x_{1}\right)} y = linear
+        interpolation value x = independent variable x_1, y_1 = values of the
+        function at one point x_2, y_2 = values of the function at another point
+      </div>
+    </article>
+    <article>
+      <div>
+        <strong>What is Extrapolation</strong>
+        <span>
+          In mathematics, extrapolation is a type of estimation, beyond the
+          original observation range, of the value of a variable on the basis of
+          its relationship with another variable
+        </span>
+      </div>
+    </article>
+    <article>
+      <div>
+        <strong>What is Intersection</strong>
+        <span>
+          In mathematics, the intersection of two sets A and B, denoted by
+          {\displaystyle A\cap B, } is the set containing all elements of A that
+          also belong to B or equivalently, all elements of B that also belong
+          to A.
+        </span>
+      </div>
+    </article>
+    <div
+      style="
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: x-large;
+        font-weight: 600;
+        text-justify: inter-cluster;
+        text-shadow: 8px;
+        text-decoration: solid;
+        color: crimson;
+        text-transform: capitalize;
+      "
+    >
+      Practical of this mathematical concepts in code
+    </div>
+    <canvas id="canvas"></canvas>
+    <script>
+      const canvas = document.getElementById('canvas')
+      // canvas size
+      const ctx = canvas.getContext('2d')
+      let t = -1
+
+      animate()
+
+      function animate() {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+        // points as obj with x,y co-ordinates to use
+        const A = { x: 200, y: 150 }
+        const B = { x: 150, y: 250 }
+        const C = { x: 50, y: 100 }
+        const D = { x: 250, y: 200 }
+        const M = { x: lerp(A.x, B.x, t), y: lerp(A.y, B.y, t) }
+        const N = { x: lerp(C.x, D.x, t), y: lerp(C.y, D.y, t) }
+
+        // get 2d context
+
+        // DRAW THE TWO LINES
+        // line A to B
+        ctx.beginPath()
+        ctx.moveTo(A.x, A.y)
+        ctx.lineTo(B.x, B.y)
+        ctx.moveTo(C.x, C.y)
+        ctx.lineTo(D.x, D.y)
+        ctx.stroke()
+
+        // draw dots at the end of each line
+        drawDot(A, 'A')
+        drawDot(B, 'B')
+        drawDot(C, 'C')
+        drawDot(D, 'D')
+        drawDot(M, 'M', t < 0 || t > 1)
+        drawDot(N, 'N', t < 0 || t > 1)
+        t += 0.01
+        requestAnimationFrame(animate)
+      }
+      function lerp(A, B, t) {
+        return A + (B - A) * t
+      }
+
+      function drawDot(point, label, isRed) {
+        ctx.beginPath()
+        ctx.fillStyle = isRed ? 'Red' : 'White'
+        ctx.arc(point.x, point.y, 10, 0, Math.PI * 2)
+        ctx.fill()
+        ctx.stroke()
+        ctx.fillStyle = 'Black'
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'middle'
+        ctx.font = 'bold 14px Arial'
+        ctx.fillText(label, point.x, point.y)
+      }
+    </script>
+  </body>
+</html>
