@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  background: darkgray;
+  overflow: hidden;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+#canvas {
+  background: lightgray;
+}
+#networkCanvas {
+  background: #020010;
+}
+.verticalButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  padding: 4px 4px;
+  cursor: pointer;
+}
+button:hover {
+  background: blue;
+}
+.svg {
+  width: 24px;
+  height: 24px;
+  color: black;
+  fill: currentColor;
+}
