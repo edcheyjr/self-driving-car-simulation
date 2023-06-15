@@ -4,9 +4,9 @@ class Car {
     y,
     width,
     height,
-    maxSpeed = 3,
+    maxSpeed = 4,
     controlType,
-    numberOfSensors = 12
+    numberOfSensors = 30,
   ) {
     this.x = x
     this.y = y
@@ -16,7 +16,7 @@ class Car {
     this.maxSpeed = maxSpeed
     this.angle = 0
     this.friction = 0.05
-    this.acceleration = 0.5
+    this.acceleration = 0.2
     this.polygon = []
     this.damaged = false
     this.controlType = controlType
@@ -26,7 +26,7 @@ class Car {
     // car sensors
     if (this.controlType != 'DUMMY') {
       this.sensor = new Sensor(this, numberOfSensors, 150, 2)
-      this.brain = new NeuralNetwork([this.sensor.rayCount, 24, 12, 6, 4])
+      this.brain = new NeuralNetwork([this.sensor.rayCount, 6, 4])
     }
     //car controls
     this.controls = new Controls(this.controlType)
