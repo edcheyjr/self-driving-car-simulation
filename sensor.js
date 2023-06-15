@@ -1,9 +1,9 @@
 class Sensor {
-  constructor(car, rayCount = 3, rayLength = 100, raySpreadAngle = 3) {
+  constructor(car, rayCount = 3, rayLength = 60, raySpreadAngle = 5 , MAKE180 = false) {
     this.car = car
     this.rayCount = rayCount
     this.rayLength = rayLength
-    this.raySpread = Math.PI / raySpreadAngle
+    this.raySpread = MAKE180 ? (2*Math.PI / raySpreadAngle) : (Math.PI / raySpreadAngle )
 
     // RAY STORE ARR
     this.rays = []

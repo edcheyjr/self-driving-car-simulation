@@ -69,3 +69,64 @@ function getRGBA(value) {
   const B = value > 0 ? 0 : 255
   return 'rgba(' + R + ',' + G + ',' + B + ',' + alpha + ')'
 }
+
+
+/**
+ *  get localstorage
+ *  @param {string} key  this is use as the key or the identifier for the data
+ *  @returns {any} data stored
+ */
+
+function getBestBrain(key){
+  try{
+   let bestBrain = window.localStorage.getItem(key)
+   console.log('bestBrain', bestBrain)
+   if(bestBrain){
+    return bestBrain
+   }
+   else{
+    throw Error("no brain currently, Try again")
+   }
+  }catch(err){
+    console.error(`The was an error, Error:-${err}`)
+    console.warn(`Suggested fix start and save for it to register`)
+  }
+  // by default return null
+  return null
+}
+
+/**
+ *  set any data for bestbrain  in the localstorage
+ * @param {string} key this is use as the key or the id for the data
+ * @param {any} data the data to be stored
+ */
+function setBestBrain(key, data){
+  try {
+    localStorage.setItem(key, JSON.stringify(data))
+    console.log(`successfully set ${key} with value ${data}`) 
+  } catch (error) {
+    console.error(`The was an error, Error:-${err}`)
+  }
+}
+
+/**
+ * REMOVE BESTBRAIN
+ *
+ */
+
+function removeBestBrain(key){
+  try {
+    localStorage.removeItem(key)
+  } catch (error) {
+    console.error(`The was an error, Error:-${err}`)
+  }
+}
+
+function addBestBrainJson(brain){
+  //create a empty json file at root address
+  // write on the file
+}
+
+function getBestBrainJson(){
+  return "./bestBrain.json"
+}

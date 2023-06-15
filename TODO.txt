@@ -1,3 +1,13 @@
+TODO
 Add Corners to the road
 add two way lane
+ implement curves on the road
+  best fitness fxn
+ fitness fxn that reward for being center of the road or going the futhers
+ delete traffic when its off screen
+ add user interect on the options propeties in a modal
+ add more interactivity such as example bestbrain can be view in the screen
+
+
+FIXME
 fix the model self improvement update process
